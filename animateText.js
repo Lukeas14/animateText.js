@@ -14,11 +14,11 @@ Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LIC
 
 ;(function($, window, document, undefined){
 
-	function AnimateText(element, options){
+	function AnimateText(element, textObjects, options, animations){
 		var self = this;
 
 		this.$element = $(element);
-		this.textObjects = options.textObjects;
+		this.textObjects = textObjects;
 		this.lastTextObject;
 		this.repeated = 0;
 
@@ -142,7 +142,7 @@ Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LIC
 			}
 		};
 		//Merge default animations with user animations
-		$.extend(true, this.animations, this.options.animations);
+		$.extend(true, this.animations, animations);
 
 		this.init();
 	}
@@ -272,7 +272,7 @@ Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LIC
 			textObject.$element.animate(
 				textObject.positions[animationPosition],
 				textObject.positions[animationPosition].duration,
-				textObject.positions.easing,
+				textObject.positions[animationPosition].easing,
 				function(){
 					//Does this animation have another position? If so animate it.
 					if(typeof(textObject.positions[(animationPosition + 1)]) !== "undefined"){
@@ -297,9 +297,9 @@ Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LIC
 		}
 	};
 
-	$.fn.animateText = function(options){
+	$.fn.animateText = function(textObjects, options, animations){
 		return this.each(function(){
-			new AnimateText(this, options);
+			new AnimateText(this, textObjects, options, animations);
 		});
 	};
 
