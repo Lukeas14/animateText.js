@@ -59,6 +59,26 @@ Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LIC
 
 		//Default animations
 		this.animations = {
+			"fadeIn": {
+				positions: {
+					start: {
+						opacity:0
+					},
+					0: {
+						opacity:1
+					}
+				}
+			},
+			"fadeOut": {
+				positions: {
+					start: {
+						opacity:1
+					},
+					0: {
+						opacity:0
+					}
+				}
+			},
 			"right_to_left": {
 				positions: {
 					start: {
@@ -252,7 +272,7 @@ Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LIC
 
 			$.each(this.textObjects, function(textObjectId, textObject){
 				//Set textObject to its start position
-				textObject.$element.css(self.animations[textObject.animation].positions.start);
+				textObject.$element.css(textObject.positions.start);
 
 				setTimeout(function(){
 					self.animateTextObject(textObject.id, 0);
