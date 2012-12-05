@@ -1,1 +1,605 @@
-animate-text.js page
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>animateText.js - A text animation jQuery Plugin</title>
+		
+		<link rel="stylesheet" type="text/css" href="/animateText.js/css/style.css"/>
+		<link rel="stylesheet" href="/animateText.js/css/shCore.css" type="text/css"/>
+		<link rel="stylesheet" href="/animateText.js/css/shThemeDefault.css" type="text/css"/>
+		<link rel="stylesheet" href="/animateText.js/css/font-awesome.css" type="text/css"/>
+		
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/animateText.js/js/animateText.js"></script>
+		<script type="text/javascript" src="/animateText.js/js/script.js"></script>
+
+		<script type="text/javascript" src="http://balupton.github.com/jquery-syntaxhighlighter/scripts/jquery.syntaxhighlighter.min.js"></script>
+	</head>
+	<body>
+
+	<div id="header_box"></div>
+	<header>
+		<h1>animatedText.js</h1>
+		<div class="buttons">
+			<a href="github.com"><i class="icon-download"></i> Download v1.0</a><br/>
+			<a href="github.com"><i class="icon-github"></i> Fork on Github</a>
+		</div>
+	</header>
+
+	<div id="animated_text">
+		<ul id="welcome">
+			<li>WELCOME</li>
+			<li>This is animateText.js</li>
+			<li>A jQuery plugin</li>
+			<li>WELCOME</a></li>
+			<li>EASILY</li>
+			<li>Create text animations</li>
+			<li>Just like the one you see here</li>
+			<li>EASILY</li>
+			<li>CHOOSE</li>
+			<li>From several preloaded animations</li>
+			<li>Customize them or create your own</li>
+			<li>CHOOSE</li>
+			<li>Fork on <a href="https://github.com/Lukeas14/animateText.js">Github</a></li>
+		</ul>
+	</div>
+	
+	<div id="content_box">
+		<ul id="nav">
+			<li id="overview" class="selected">Overview</li>
+			<li id="documentation">Documentation</li>
+			<li id="license">License</li>
+		</ul>
+		
+		<div class="content selected" id="overview">
+			<h3>What is it?</h3>
+			<p>
+				animateText.js is a jQuery plugin that makes it easy to create text animations like the one seen above. It comes with a few basic animations by default. If they're not good enough for you, customize them or make your own.
+			</p>
+		
+			<h3>How do I use it?</h3>
+
+			<div style="float:right; width:400px; margin:0 30px 0 20px">
+				<pre class="highlight">
+					&lt;ul id="example">&lt;li>Kaboom!&lt;/li>&lt;/ul>
+					&lt;script type="text/javascript">
+						$("#example").animateText([
+								{
+									offset: 0,
+									duration: 1000,
+									animation: "explode"
+								}
+						]);
+					&lt;/script>
+				</pre>
+			</div>
+			
+			<ol>
+				<li>
+					Make sure the <a href="http://jquery.com" target="_blank">jQuery</a> library is loaded (version 1.4 or above).
+					<br/><br/>
+				</li>
+				<li>
+					Create an unordered list (&lt;ul>) with at least one list item (&lt;li>) containing some text.
+					<br/><br/>
+				</li>
+				<li>
+					Begin animating by calling .animateText() on a jQuery selector of the unordered list. The first parameter of .animateText() is required, an array of text objects representing the list items.
+					<br/><br/>
+				</li>
+			</ol>
+
+			<div class="clear"></div>
+
+			<h3>Who built it?</h3>
+			<p>
+				animateText.js was created by web developer Justin Lucas. Follow me on <a href="http://github.com/Lukeas14">Github</a> or <a href="http://twitter.com/jlukeas">Twitter</a>.
+			</p>
+		</div>
+		
+		<div class="content" id="license">	
+			<p>
+				Copyright (c) 2012 Justin Lucas
+				<br/><br/>
+				Permission is hereby granted, free of charge, to any person obtaining
+				a copy of this software and associated documentation files (the
+				"Software"), to deal in the Software without restriction, including
+				without limitation the rights to use, copy, modify, merge, publish,
+				distribute, sublicense, and/or sell copies of the Software, and to
+				permit persons to whom the Software is furnished to do so, subject to
+				the following conditions:
+				<br/><br/>
+				The above copyright notice and this permission notice shall be
+				included in all copies or substantial portions of the Software.
+				<br/><br/>
+				THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+				EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+				MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+				NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+				LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+				OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+				WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+			</p>
+		</div>
+		
+		<div class="content" id="documentation">
+			<h3>Overview</h3>
+
+			<div style="float:right; width:400px; margin:0 30px 0 20px">
+				<b>Example animation:</b>
+				<br/><br/>
+				<pre class="highlight">
+					&lt;ul id="example">
+						&lt;li>Coming from the left&lt;/li>
+						&lt;li>Coming in from the right&lt;/li>
+						&lt;li>Coming in from the top&lt;/li>
+					&lt;/ul>
+					&lt;script type="text/javascript">
+						var textObjects = [
+							{
+								offset: 0,
+								duration: 2000,
+								animation: 'leftToRight'
+							},
+							{
+								offset: 1000,
+								duration: 2000,
+								animation: 'rightToLeft'
+							},
+							{
+								offset: 2000,
+								duration: 2000,
+								animation: 'topToBottom'
+							}
+						],
+						options = {
+							repeat: 5
+						},
+						animations = {
+							topToBottom: {
+								positions: {
+									start: {
+										bottom: '100%',
+										left: '50%',
+									},
+									1:  {
+										bottom: '0%'
+									}
+								}
+							}
+						};
+						$("#example").animateText(textObjects, options, animations);
+					&lt;/script>
+				</pre>
+			</div>
+
+			<p>
+				animatedText() accepts 3 parameters: textObjects, options and animations. Only textObjects is required. 
+			</p>
+
+			<p>
+				Here's a brief overview of the parts that make up textAnimate.js:
+				<br/><br/>
+
+				<b>textObjects</b> - A textObject represents a single block of text, contained within an &lt;li>, that animates as a whole. Each textObject has 3 main parameters (animation, offset, duration) that determine which animation to use, when to start and how long it should last. A collection of textObjects make up a textGroup.
+				<br/><br/>
+				
+				<b>animations</b> - An animation contains instructions on how to move and transform a textObject. These instructions are made up of 1 or more 'positions' which describe a state the textObject will animate into. 
+				<br/><br/>
+				
+				<b>positions</b> - A position describes a state the textObject will animate into. Each animation contains 1 or more positions. The first position is the starting point for the textObject which will immediately begin animating into the state described in the next position. If more positions exist the textObject will continue animating to each of them, one at a time. 
+			</p>
+
+			<div class="clear"></div>
+
+			<h3>textObjects (array)</h3>
+			<p>
+				textObjects is an array of objects, each one representing a single list item. The order of an object in the array determines which &lt;li> it represents. Every &lt;li> must have a corresponding textObject. 
+			</p>
+			<p>
+				Each textObject has several properties describing how it should be animated (none are required):
+			</p>
+			<table>
+				<thead>
+					<th>Property</th>
+					<th>Data Type</th>
+					<th>Default Value</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>offset</td>
+						<td>Integer (0 - &infin;)</td>
+						<td>0</td>
+						<td>
+							<p>
+								The length of time (in milliseconds) to wait before this textObject begins its first animation.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>duration</td>
+						<td>Integer (0 - &infin;)</td>
+						<td>1000</td>
+						<td>
+							<p>
+								The length of time (in milliseconds) in which all animations for this textObject will complete. 
+							</p>
+							<p>
+								The ratio of each positions duration in this textObject's animation will be maintained. Example: Suppose an animation's 3 positions have durations of 500, 1000, and 2000 milliseconds for a total duration of 3500 . If a textObject using that animation has a duration set to 1750, the positions will now have durations of 250, 500 and 1000 milliseconds.
+							</p>
+							<p>
+								The duration of other textObjects using the same animation will not be affected.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>animation</td>
+						<td>String</td>
+						<td>'explode'</td>
+						<td>
+							<p>
+								The name of the animation to be used for this textObject.
+							</p>
+							<p>
+								animateText.js comes with several default animations. You can also create your own using the animateText.js' animations parameter or customize the default ones using either the animations parameter or the textObject's positions parameter.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>positions</td>
+						<td>Object</td>
+						<td>{}</td>
+						<td>
+							<p>
+								Customize an animation specifically for this textObject by adding or modifying its positions.
+							</p>
+							<p>
+								Uses the same rules as the <a href="#">animation</a> parameter.
+							</p>
+							<p>
+								Example - Customize the look and feel of the textObject at the start position and the duration of the first animation:
+							</p>
+							<div style="width:350px; margin:0px auto;">
+								<pre class="highlight">
+									$("#example").animateText([
+										{
+											animation: 'rightToLeft',
+											positions: {
+												start: {
+													top:'35px',
+													'font-size': '37px',
+													'font-weight': 700,
+													color: '#CCC'
+												},
+												0: {
+													duration: 4000
+												}
+											}
+										}
+									]);
+								</pre>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3>options (Object)</h3>
+
+			<div style="float:right; width:400px; margin:0px 35px 0 20px;">
+				<pre class="highlight">
+					$("#example").animateText(
+						[{}],
+						{
+							repeat: 5,
+							textObject: {
+								offset: 1000,
+								animation: 'implode'
+							},
+							position: {
+								duration: 3000,
+								easing: 'linear'
+							}
+						}
+					);
+				</pre>
+			</div>
+
+			<p>
+				The options object allows you to change any of the several default values. Properties set in an animation or textObject will override these options. To the right is an example of how to override the default values:
+			</p>
+
+			<div class="clear"></div>
+
+			<p>
+				Here's a complete list of the options you can set:
+			</p>
+
+			<table>
+				<thead>
+					<th>Property</th>
+					<th>Data Type</th>
+					<th>Default Value</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>repeat</td>
+						<td>Boolean or Integer<br/>(1 - &infin;, True, False)</td>
+						<td>True</td>
+						<td>
+							<p>
+								Set the number of times the entire animation sequence repeats.
+							</p>
+							<p>
+								<b>True</b> - Repeat animations infinitely.
+								<br/>
+								<b>False</b> - Play animations once and don't repeat.
+								<br/>
+								<b>0 - &infin;</b> - Play animations once and then repeat this many times.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>textObject.offset</td>
+						<td>Integer (0 - &infin;)</td>
+						<td>0</td>
+						<td>
+							Set the default offset time for textObjects.
+						</td>
+					</tr>
+					<tr>
+						<td>textObject.animation</td>
+						<td>String</td>
+						<td>'explode'</td>
+						<td>
+							Set the default animation for textObjects.
+						</td>
+					</tr>
+					<tr>
+						<td>position.duration</td>
+						<td>Integer (0 - &infin;)</td>
+						<td>1000</td>
+						<td>
+							Set the default duration for positions
+						</td>
+					</tr>
+					<tr>
+						<td>position.easing</td>
+						<td>String</td>
+						<td>'swing'</td>
+						<td>
+							Set the default easing function for positions
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3>Animations (Object)</h3>
+			<p>
+				The animations parameter allows you to customize existing animations or add your own. The object can contain any number of animations using each animations name as the key. Each animation is itself an object containing a single property named 'positions'. 
+			</p>
+			<p>
+				The positions property contains 1 or more objects each describing a state the textObject will animate into. The first position is always labeled 'start' and is used as the starting point for the textObject. The 'start' position object can contain any style property accepted by jQuery's <a href="http://api.jquery.com/css/">.css()<a/> function. All subsequent positions represent animations and must be labeled from 0 - n. These positions can contain any property accepted by jQuery's <a href="http://api.jquery.com/animate/">.animate()</a> function. They also accept the 'duration' and 'easing' properties:
+			</p>
+			<table>
+				<thead>
+					<th>Property</th>
+					<th>Data Type</th>
+					<th>Default Value</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>easing</td>
+						<td>String ('swing', 'linear')</td>
+						<td>'linear'</td>
+						<td>
+							Alter the speeds of the animation to this position by setting an easing function. 
+
+							By default only jQuery's 'swing' and 'linear' easing function are available. However, if the <a href="http://jqueryui.com/" target="_blank">jQuery UI</a> library is loaded, you can pass in any of the easing effects it offers. Here's a full <a href="http://jqueryui.com/effect/#easing" target="_blank">list</a>.
+						</td>
+					</tr>
+					<tr>
+						<td>duration</td>
+						<td>Integer (0 - &infin;)</td>
+						<td>1000</td>
+						<td>
+							The length of time (in milliseconds) given for the animation to this position to complete.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>
+				Preloaded animations - fadeIn, fadeOut, rightToLeft, leftToRight, explode, implode.
+			</p>
+
+			<div style="float:right; width:400px; margin:0px 35px 0 20px;">
+				<pre class="highlight">
+				$("#example").animateText(
+					[{}],
+					{},
+					{
+						"explode": {
+							positions: {
+								0: {
+									duration: 2000
+								}
+							}
+						}						
+					}
+				);
+				</pre>
+			</div>
+			<p>
+				Customize any of the preset animations by extending them. Simply create an animation object with the same key and include only the properties you would like to change. These changes will be merged into the existing animation. For example, here's how you would change the duration of the '0' position in the 'explode' animation to 2 seconds:
+			</p>
+
+			<div class="clear"></div>
+
+			<div style="float:right; width:400px; margin:0 35px 0 20px;">
+				<pre class="highlight">
+				$("#example").animateText(
+					[{
+						animation: 'bottomLeftToTopRight'
+					}],
+					{},
+					{
+						bottomLeftToTopRight: {
+							positions: {
+								start: {
+									bottom: '0%',
+									left: '0%'
+								}
+								0: {
+									bottom: '100%',
+									left: '100%',
+									easing: 'linear',
+									duration: 2000
+								}
+							}
+						}
+					}
+				);
+				</pre>
+			</div>
+			<p>
+				Or, create your own animation from scratch:
+			</p>
+
+			<div class="clear"></div>
+
+			<h3>Requirements</h3>
+			<ul>
+				<li>jQuery 1.4 or above</li>
+				<li>jQuery UI 1.8 and above - only if using an easing function other than 'linear'</li>
+			</ul>
+
+			<!--<h3>Browser Support</h3>-->
+
+		</div>
+	</div>
+
+	<footer>
+		
+	</footer>
+
+	<script type="text/javascript">
+	//SyntaxHighlighter
+	$.SyntaxHighlighter.init();
+
+	//Content Tabs
+	$("#content_box #nav li").click(function(){
+		switch_content(this);
+	});
+
+	//Homepage text animation
+	var positions = {
+		rightToLeft: {
+			start: {
+				top:'35px',
+				'font-size': '37px',
+				'font-weight': 700,
+				color: '#CCC'
+			}
+		},
+		leftToRight: {
+			start: {
+				top: '80px',
+				'font-size': '30px',
+				color: '#FDFA27',
+				'font-weight': 700
+			}
+		},
+		fadeIn: {
+			start: {
+				left:null,
+				top:'10%',
+				right:'25%',
+				'font-size': '20px',
+				'font-weight': 700
+			}
+		}
+	};
+	$(document).ready(function(){
+		$("#welcome").animateText([
+			{
+				offset: 0,
+				duration: 1000,
+				animation: "explode",
+			},
+			{
+				animation: "rightToLeft",
+				offset: 0,
+				positions: positions.rightToLeft
+			},
+			{
+				animation: "leftToRight",
+				offset: 0,
+				positions: positions.leftToRight
+			},
+			{
+				offset:500,
+				animation: "fadeIn",
+				positions: positions.fadeIn,
+				duration: 2600
+			},
+			{
+				offset: 3600,
+				duration: 1000,
+				animation: "explode",
+			},
+			{
+				animation: "rightToLeft",
+				offset: 3600,
+				positions: positions.rightToLeft
+			},
+			{
+				animation: "leftToRight",
+				offset: 3600,
+				positions: positions.leftToRight
+			},
+			{
+				offset:4100,
+				animation: "fadeIn",
+				positions: positions.fadeIn,
+				duration: 2600
+			},
+			{
+				offset: 7200,
+				duration: 1000,
+				animation: "explode",
+			},
+			{
+				animation: "rightToLeft",
+				offset: 7200,
+				positions: positions.rightToLeft
+			},
+			{
+				animation: "leftToRight",
+				offset: 7200,
+				positions: positions.leftToRight
+			},
+			{
+				offset: 7700,
+				animation: "fadeIn",
+				positions: positions.fadeIn,
+				duration: 2600
+			},
+			{
+				offset: 10800,
+				animation: "implode",
+				positions: {
+					1: {
+						duration: 4200
+					}
+				}
+			}
+		]);
+	});
+	</script>
+
+	</body>
+</html>

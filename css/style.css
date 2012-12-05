@@ -1,0 +1,187 @@
+body{
+	margin:0;
+	padding:0;
+	background:#000 url('/animateText.js/images/football_field.jpg') top center no-repeat;
+	font-family:Arial, Arial, Helvetica, sans-serif;
+}
+
+.clear{
+	clear:both;
+	width:100%;
+	height:0px;
+}
+
+#header_box{
+	position:absolute;
+	top:10px;
+	width:100%;
+	height:120px;
+	background:#000;
+	opacity:0.6;
+	z-index:-1;
+}
+header{
+	width:800px;
+	height:120px;
+	margin:10px auto 0px auto;
+	padding:0px 0 0 0;
+}
+header h1{
+	float:left;
+	background:#EEE;
+	margin:33px 0 0 0;
+	padding:10px 10px;
+	text-align:left;
+	color:#333;
+	font-size:25px;
+	font-weight:normal;
+	opacity:0.8;
+	background:#EEE;
+	border-radius:10px;
+	background: -webkit-linear-gradient(top, #EEE 0%,#666 100%); /* Chrome10+,Safari5.1+ */
+
+}
+header .buttons{
+	float:right;
+	margin:0px auto;
+	text-align:center;
+}
+header .buttons a{
+	display:inline-block;
+	width:200px;
+	margin:9px 0 0 0;
+	padding:10px 0px;
+	text-align:center;
+	color:#BBB;
+	font-size:22px;
+	background:transparent;
+	border:0px;
+	border-radius:10px;
+	text-decoration: none;
+	opacity:0.8;
+}
+header .buttons a:hover{
+	background:#222;
+	color:#222;
+	background:#EEE;
+}
+
+#animated_text{
+	width:100%;
+	height:150px;
+	margin:0 0 0 0;
+	border:0px solid red;
+}
+#animated_text ul{
+	display:none;
+}
+#animated_text ul li{
+	color:#EEE;
+}
+#animated_text ul li a{
+	color:#080063;
+	text-decoration:none;
+}
+
+#content_box {
+	width:800px;
+	margin:0px auto;
+	padding:1px 1px 10px 1px;
+	background:#EEE;
+	opacity:0.85;
+	border-radius:10px;
+}
+
+#nav{
+	list-style:none;
+	margin:0 0 10px 0;
+	padding:0px;
+	width:100%;
+	overflow:hidden;
+}
+#nav li{
+	float:left;
+	width:264px;
+	margin:1px;
+	padding:15px 0;
+	color:#EEE;
+	text-align:center;
+	cursor:pointer;
+
+	background: #1e5799; /* Old browsers */
+	background: -moz-linear-gradient(top, #444444 0%, #000000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#444444), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #444 0%,#000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #444444 0%,#000000 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #444444 0%,#000000 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #444444 0%,#000000 100%); /* W3C */
+}
+#nav li:hover{
+	opacity:0.9;
+}
+#nav li.selected{
+	cursor:default;
+	background:transparent;
+	color:#333;
+	opacity:1;
+}
+#nav li#overview{
+	width:265px;
+	border-top-left-radius:10px;
+}
+#nav li#license{
+	width:265px;
+	border-top-right-radius:10px;
+}
+
+.content{
+	display:none;
+	width:780px;
+	height:600px;
+	padding:10px;
+	font-size:13px;
+	overflow-y:auto;
+}
+.content.selected{
+	display:block;
+}
+.content h3{
+	font-size:18px;
+	font-weight:normal;
+	color:#106600;
+}
+.content p{
+	padding:0 30px;
+}
+.content table{
+	width:705px;
+	margin:0 auto;
+	border:1px solid #000;
+	border-collapse:collapse;
+}
+.content th, .content td{
+	min-width:100px;
+	border:1px solid #999;
+	padding:5px 5px;
+}
+.content th{
+	background:#CCC;
+}
+.content td p{
+	margin:5px 0;
+	padding:0;
+}
+footer{
+	width:100%;
+	height:40px;
+}
+
+.prettyprint li > *{
+	font-size:12px!important;
+}
+
+pre.highlight{
+	margin-top:0px;
+	padding-top:0px;
+}
